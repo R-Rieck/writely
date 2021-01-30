@@ -1,5 +1,5 @@
 export interface SongsType {
-    "songList": SongType[]
+    "songs": SongType[]
 }
 export interface SongType {
     "id": string,

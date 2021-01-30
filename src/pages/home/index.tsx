@@ -7,20 +7,20 @@ import { SongsType } from "../../types/song";
 const data = require("../../../assets/test.data.json");
 
 const Home = ({ navigation }: any) => {
-  const [songs] = useState<SongsType>(data);
+  const [songList] = useState<SongsType>(data);
 
   useEffect(() => {
-    console.log(songs)
-  }, []);
+    console.log(songList)
+  }, [songList]);
 
   return (
     <View style={styles.homeContainer}>
-      <Text style={{color: 'white', fontSize: 70}}>Hallo</Text>
-      {/* <ScrollView>
-        {songs &&
-          songs.songList &&
-          songs.songList.map((song) => <SongItem song={song}></SongItem>)}
-      </ScrollView> */}
+      
+      <ScrollView>
+        {songList &&
+          songList.songs &&
+          songList.songs.map((song) => <SongItem key={ song.id}song={song}></SongItem>)}
+      </ScrollView>
     </View>
   );
 };

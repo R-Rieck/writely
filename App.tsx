@@ -12,36 +12,51 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <View style={styles.container}>
-      <View style={styles.contentContainer}>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="Home"
-              component={HomeScreen}
-              options={{ title: "Welcome" }}
-            />
-            <Stack.Screen
-              name="Snippet"
-              component={AddSnippet}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </View>
-      <BottomNavigation />
+      <NavigationContainer>
+        <View style={styles.navigationContainer}>
+          <View style={styles.contentContainer}>
+            <Stack.Navigator>
+              <Stack.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{
+                  title: "Songs",
+                  headerStyle: { ...headerStyle },
+                  headerTintColor: "white",
+                }}
+              />
+              <Stack.Screen name="Snippet" component={AddSnippet} />
+            </Stack.Navigator>
+          </View>
+          <BottomNavigation />
+        </View>
+      </NavigationContainer>
       <StatusBar style="dark" animated={true} />
     </View>
   );
 }
 
+const headerStyle = {
+  backgroundColor: "#2F3233"
+};
+
 const styles = StyleSheet.create({
   container: {
     display: "flex",
     flex: 1,
-    backgroundColor: "#181A1B",
     alignItems: "center",
+    backgroundColor: "#181A1B",
     justifyContent: "center",
+  },
+  navigationContainer: {
+    flex: 1,
+    backgroundColor: "#181A1B",
+    alignSelf: "stretch",
+    display: "flex",
+    flexDirection: "column",
   },
   contentContainer: {
     flex: 10,
+    backgroundColor: "#181A1B",
   },
 });
